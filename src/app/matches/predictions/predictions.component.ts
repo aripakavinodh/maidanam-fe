@@ -285,6 +285,8 @@ export class PredictionsComponent implements OnInit, OnDestroy {
   // }
 
   submitPrediction() {
+      this.submitFail = false;
+      this.submitPass = false;
 
    if (this.selectedWinnerId || this.currentUserPrediction.winnerId) {
        this.selectWinnerFlag = false;
@@ -324,8 +326,12 @@ export class PredictionsComponent implements OnInit, OnDestroy {
    }
 
    if (this.userPredictionToSubmit.challengedUserId === this.userPredictionToSubmit.challengedUserId1) {
-        this.selectFasakFlag = true;
-        return;
+       if(this.userPredictionToSubmit.challengedUserId == null && this.userPredictionToSubmit.challengedUserId1 == null) {
+           this.selectFasakFlag = false;
+       } else {
+           this.selectFasakFlag = true;
+           return;
+       }
    } else {
        this.selectFasakFlag = false;
    }

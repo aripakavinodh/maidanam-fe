@@ -21,3 +21,12 @@ mat-toolbar {
     50%{     color: white }
     100%{   color: blue }
 }
+
+.blinking10{
+    animation:blinkingText10 0.8s infinite;
+}
+@keyframes blinkingText10{
+    0%{     color: grey }
+    50%{     color: white }
+    100%{   color: red }
+}
