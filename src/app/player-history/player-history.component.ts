@@ -107,6 +107,7 @@ export class PlayerHistoryComponent implements OnInit, AfterContentInit, OnDestr
                                     prediction: hist.pwinnerTeamName + '(' + hist.presultType.charAt(0) + ')',
                                     coinsAtPlay: hist.coinsAtPlay,
                                     fasak: hist.challengedUser,
+                                    fasak1: hist.challengedUser1,
                                     won: hist.wins,
                                     loss: hist.losses,
                                     bonus: hist.bonus,

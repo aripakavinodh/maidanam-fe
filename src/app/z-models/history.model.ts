@@ -22,6 +22,7 @@ export class HistoryModel {
     public pwinnerTeamName: string;
     public presultType: string;
     public challengedUser: string;
+    public challengedUser1: string;
     public bonus: number;
 
 
@@ -30,7 +31,7 @@ export class HistoryModel {
                 team2: string, localDate: string, coinsAtPlay: number, defaultCoins: number,
                 wins: number, losses: number, fasaks: number, loan: number, awinnerTeamName: string,
                 amatchResult: string, aresultType: string, pwinnerTeamName: string, presultType: string,
-                challengedUser: string, bonus: number) {
+                challengedUser: string, challengedUser1: string, bonus: number) {
         this.groupId = groupId;
         this.userId = userId;
         this.matchId = matchId;
@@ -53,6 +54,7 @@ export class HistoryModel {
         this.pwinnerTeamName = pwinnerTeamName;
         this.presultType = presultType;
         this.challengedUser = challengedUser;
+        this.challengedUser1 = challengedUser1;
         this.bonus = bonus;
     }
 }

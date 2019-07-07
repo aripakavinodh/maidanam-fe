@@ -50,6 +50,7 @@ export class PredictionsComponent implements OnInit, OnDestroy {
   team2odds: OddsModel;
   selectWinnerFlag = false;
   selectMarginFlag = false;
+  selectFasakFlag = false;
   submitFail = false;
   submitPass = false;
   errorMessage: string;
@@ -62,7 +63,7 @@ export class PredictionsComponent implements OnInit, OnDestroy {
   @ViewChild('p') predictionForm: NgForm;
   @ViewChild(MatSort) sort: MatSort;
 
-  displayedColumns: string[] = ['player', 'coins', 'coinspercent', 'prediction', 'challenged'];
+  displayedColumns: string[] = ['player', 'coins', 'coinspercent', 'prediction', 'challenged', 'challenged1'];
   predictionList: PredTableInterface[] = [];
   dataSource: MatTableDataSource<PredTableInterface>;
 
@@ -237,8 +238,11 @@ export class PredictionsComponent implements OnInit, OnDestroy {
                                       prediction: pred.winner.teamName + '(' + pred.margin + ')',
                                       challenged: pred.challengedUser ? pred.challengedUser.displayName : 'N/A',
                                       challengedUserId: pred.challengedUser ? pred.challengedUser.userId : null,
-                                      coins: pred.coinsAtPlay.toLocaleString('en', {useGrouping: true}),
+                                      coins: pred.coinsAtPlay,
                                       validFasak: pred.validFasak,
+                                      challenged1: pred.challengedUser1 ? pred.challengedUser1.displayName : 'N/A',
+                                      challengedUserId1: pred.challengedUser1 ? pred.challengedUser1.userId : null,
+                                      validFasak1: pred.validFasak1,
                                       playerId: pred.userId,
                                       predPercent: pred.user.totalCoins > 0 ?
                                           Math.round((pred.coinsAtPlay / pred.user.totalCoins) * 100) : 100
@@ -310,6 +314,20 @@ export class PredictionsComponent implements OnInit, OnDestroy {
 
    if (this.userPredictionToSubmit.challengedUserId === undefined) {
        this.userPredictionToSubmit.challengedUserId = null;
+   }
+
+   this.userPredictionToSubmit.challengedUserId1 = this.predictionForm.value.targetUser1 != null ?
+      this.predictionForm.value.targetUser1 : this.userPredictionToSubmit.challengedUserId1;
+
+   if (this.userPredictionToSubmit.challengedUserId1 === undefined) {
+      this.userPredictionToSubmit.challengedUserId1 = null;
+   }
+
+   if (this.userPredictionToSubmit.challengedUserId === this.userPredictionToSubmit.challengedUserId1) {
+        this.selectFasakFlag = true;
+        return;
+   } else {
+       this.selectFasakFlag = false;
    }
 
    this.userPredictionToSubmit.winnerId = this.predictionForm.value.winner != null ?
