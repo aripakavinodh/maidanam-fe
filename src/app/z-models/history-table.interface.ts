@@ -4,6 +4,7 @@ export interface HistoryTableInterface {
     prediction: string;
     coinsAtPlay: number;
     fasak: string;
+    fasak1: string;
     won: number;
     loss: number;
     bonus: number;

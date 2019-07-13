@@ -57,7 +57,11 @@
 
     <ng-container matColumnDef="fasak">
       <th mat-header-cell *matHeaderCellDef mat-sort-header> Fasak'<sup>ed</sup> </th>
-      <td align="center" mat-cell *matCellDef="let element">{{element.fasak == null ? '-None-' : element.fasak}}</td>
+      <td align="center" mat-cell *matCellDef="let element">
+        <span>{{element.fasak == null ? '-None-' : element.fasak}}</span>
+        <br>
+        <span *ngIf="element.fasak1">{{element.fasak1}}</span>
+      </td>
     </ng-container>
 
     <ng-container matColumnDef="won">
